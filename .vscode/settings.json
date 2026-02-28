@@ -1,0 +1,4 @@
+{
+    "cmake.sourceDirectory": "/home/darius/dev/stm32/fk723m1/blinky/Drivers/CMSIS/NN",
+    "armToolchainPath": "/opt/arm-gnu-toolchain-15.2.rel1-x86_64-arm-none-eabi/bin"
+}
