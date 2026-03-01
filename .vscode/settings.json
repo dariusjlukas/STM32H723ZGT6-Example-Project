@@ -1,3 +1,10 @@
 {
-    "armToolchainPath": "/opt/arm-gnu-toolchain-15.2.rel1-x86_64-arm-none-eabi/bin"
+    "armToolchainPath": "/opt/arm-gnu-toolchain-15.2.rel1-x86_64-arm-none-eabi/bin",
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/darius/dev/stm32/fk723m1/blinky/build",
+            "binaryPath": "/home/darius/dev/stm32/fk723m1/blinky/build/blinky.elf",
+            "binaryArgs": []
+        }
+    ]
 }
