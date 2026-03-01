@@ -1,0 +1,33 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build firmware
+        run: docker build -t blinky-build .
+
+      - name: Extract artifacts
+        run: |
+          docker create --name extract blinky-build
+          docker cp extract:/app/build/blinky.bin .
+          docker cp extract:/app/build/blinky.elf .
+          docker cp extract:/app/build/blinky.hex .
+          docker rm extract
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware
+          path: |
+            blinky.bin
+            blinky.elf
+            blinky.hex

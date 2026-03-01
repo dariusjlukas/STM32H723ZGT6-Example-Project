@@ -13,6 +13,8 @@ An example C++/Makefile project for the STM32H723ZGT6 which demonstrates how to 
 - VSCode *Cortex-Debug* plugin
 - VSCode *Makefile Tools* plugin
 
+Note that the Makefile expects the toolchain to be located at: "/opt/arm-gnu-toolchain-15.2.rel1-x86_64-arm-none-eabi/bin". Either update the Makefile to the correct path or pass the "GCC_PATH" variable when running make.
+
 ## Build
 
 ```bash
@@ -34,6 +36,24 @@ make flash_dfu
 ## Debug (VSCode)
 
 Run and Debug -> Start Debugging (Debug (OpenOCD))
+
+## Build (Docker)
+
+There is a dockerfile which can be used to build the project. You can build the dockerfile by running:
+
+```bash
+docker build -t blinky-builder .
+```
+
+The build artifacts can then be extracted by running:
+
+```bash
+docker create --name extract blinky-builder
+docker cp extract:/app/build/blinky.bin .
+docker cp extract:/app/build/blinky.elf .
+docker cp extract:/app/build/blinky.hex .
+docker rm extract
+```
 
 ## License
 
