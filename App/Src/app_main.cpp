@@ -1,3 +1,5 @@
+/* SPDX-License-Identifier: MIT */
+
 #include "app_main.h"
 #include "main.h"
 #include "usbd_cdc_if.h"
