@@ -1,7 +1,7 @@
 FROM alpine:latest AS builder
 
 # Install dependencies
-RUN apk update && apk upgrade && apk add make openocd g++-arm-none-eabi
+RUN apk update && apk upgrade && apk add make g++-arm-none-eabi
 
 WORKDIR /app
 
