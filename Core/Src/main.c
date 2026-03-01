@@ -22,7 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "usbd_cdc_if.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -102,6 +102,8 @@ int main(void)
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
 
+  const char buf[] = {"LED Toggled\r\n"};
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -109,6 +111,7 @@ int main(void)
   while (1)
   {
     HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+    CDC_Transmit_HS((uint8_t*)buf, strlen(buf));
     HAL_Delay(1000);
     /* USER CODE END WHILE */
 
